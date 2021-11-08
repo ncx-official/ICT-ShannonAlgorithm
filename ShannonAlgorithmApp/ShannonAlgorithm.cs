@@ -14,5 +14,11 @@ namespace ShannonAlgorithmApp
 		{
 			this.data = userInput;
 		}
+
+		public string[] GetData(){
+
+			return data;
+        }
+
 	}
 }
