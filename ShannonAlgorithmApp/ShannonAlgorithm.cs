@@ -10,6 +10,7 @@ namespace ShannonAlgorithmApp
 	{
 		private string[] data;
 
+
 		public ShannonAlgorithm(string[] userInput)
 		{
 			this.data = userInput;
@@ -18,6 +19,14 @@ namespace ShannonAlgorithmApp
 		public string[] GetData(){
 
 			return data;
+        }
+
+		private void Worker()
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+
+            }
         }
 
 	}
