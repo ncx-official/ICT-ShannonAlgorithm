@@ -9,6 +9,9 @@ namespace ShannonAlgorithmApp
 	class ShannonAlgorithm
 	{
 		private string[] data;
+		
+		//Visual BASIC TOP
+		
 
 		public ShannonAlgorithm(string[] userInput)
 		{
