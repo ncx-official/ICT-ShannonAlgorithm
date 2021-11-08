@@ -17,5 +17,9 @@ namespace ShannonAlgorithmApp
 			InitializeComponent();
 		}
 
+		private void button1_Click(object sender, EventArgs e)
+		{
+			ShannonAlgorithm userText_1 = new ShannonAlgorithm(richTextBox1.Text.Split(" "));
+		}
 	}
 }
