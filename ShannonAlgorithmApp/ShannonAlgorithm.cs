@@ -28,6 +28,26 @@ namespace ShannonAlgorithmApp
 			return ListLetter;
         }
 
+		private void SortInterest()
+		{
+			bool flag = false;
+			for (int i = 1; i < ListLetter.Count; i++)
+			{
+				if (i == ListLetter.Count - 1)
+				{
+					if (flag) { i = 1; flag = false; } else { break; }
+				}
+				if (ListLetter[i - 1].interest > ListLetter[i].interest)
+				{
+					Letter swap = ListLetter[i - 1];
+					ListLetter[i - 1] = ListLetter[i];
+					ListLetter[i] = swap;
+					flag = true;
+				}
+			}
+		}
+
+
 		private void CheckArray(char elem)
 		{
 
@@ -55,6 +75,7 @@ namespace ShannonAlgorithmApp
             {
 				ListLetter[i].SetInterest(sum);
             }
+			SortInterest();
 		}
 	}
 }
