@@ -31,17 +31,17 @@ namespace ShannonAlgorithmApp
 		private void SortInterest()
 		{
 			bool flag = false;
-			for (int i = 1; i < ListLetter.Count; i++)
+			for (int i = 0; i < ListLetter.Count; i++)
 			{
-				if (i == ListLetter.Count - 1)
+				if (i+1 == ListLetter.Count)
 				{
-					if (flag) { i = 1; flag = false; } else { break; }
+					if (flag) { i = 0; flag = false; } else { break; }
 				}
-				if (ListLetter[i - 1].interest > ListLetter[i].interest)
+				if (ListLetter[i].interest > ListLetter[i+1].interest)
 				{
-					Letter swap = ListLetter[i - 1];
-					ListLetter[i - 1] = ListLetter[i];
-					ListLetter[i] = swap;
+					Letter swap = ListLetter[i];
+					ListLetter[i] = ListLetter[i+1];
+					ListLetter[i+1] = swap;
 					flag = true;
 				}
 			}
