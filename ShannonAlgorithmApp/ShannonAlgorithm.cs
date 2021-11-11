@@ -10,13 +10,19 @@ namespace ShannonAlgorithmApp
 	{
 		private char[] data;
 		private List<Letter> ListLetter = new List<Letter>() { };
-
+		private int sum = 0;
 		public ShannonAlgorithm(char[] userInput)
 		{
 			this.data = userInput;
 			Worker();
 		}
-
+		private void GetFullSum()
+        {
+            for (int i = 0; i < ListLetter.Count; i++)
+            {
+				sum += ListLetter[i].count;
+            }
+        }
 		public List<Letter> GetData(){
 
 			return ListLetter;
@@ -44,6 +50,11 @@ namespace ShannonAlgorithmApp
 			{
 				CheckArray(data[i]);
 			}
+			GetFullSum();
+            for (int i = 0; i < ListLetter.Count; i++)
+            {
+				ListLetter[i].SetInterest(sum);
+            }
 		}
 	}
 }
