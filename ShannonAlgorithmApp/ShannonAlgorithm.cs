@@ -10,7 +10,7 @@ namespace ShannonAlgorithmApp
 	{
 		private char[] data;
 		private List<Letter> ListLetter = new List<Letter>() { };
-		private int sum = 0;
+		private double sum = 0;
 		public ShannonAlgorithm(char[] userInput)
 		{
 			this.data = userInput;
@@ -42,7 +42,7 @@ namespace ShannonAlgorithmApp
 					return;
 				}
 			}
-			ListLetter.Add(new Letter(elem, 0));
+			ListLetter.Add(new Letter(elem, 1));
 		}
 		public void Worker()
         {

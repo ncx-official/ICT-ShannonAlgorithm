@@ -18,9 +18,9 @@ namespace ShannonAlgorithmApp
             this.count = count;
         }
 
-        public void SetInterest(int all)
+        public void SetInterest(double all)
         {
-            interest = all / count;
+            interest = (count/all)*100.0;
         }
     }
 }
