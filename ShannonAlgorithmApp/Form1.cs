@@ -12,6 +12,8 @@ namespace ShannonAlgorithmApp
 {
 	public partial class Form1 : Form
 	{
+		private List<Letter> data;
+
 		public Form1()
 		{
 			InitializeComponent();
@@ -19,7 +21,8 @@ namespace ShannonAlgorithmApp
 
 		private void button1_Click(object sender, EventArgs e)
 		{
-			ShannonAlgorithm userText_1 = new ShannonAlgorithm(richTextBox1.Text.Split(" "));
+			ShannonAlgorithm userText_1 = new ShannonAlgorithm(richTextBox1.Text.ToCharArray());
+			data = userText_1.GetData();
 		}
 	}
 }
