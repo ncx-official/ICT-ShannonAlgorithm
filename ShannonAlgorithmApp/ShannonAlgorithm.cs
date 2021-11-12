@@ -8,74 +8,72 @@ namespace ShannonAlgorithmApp
 {
 	class ShannonAlgorithm
 	{
-		private char[] data;
-		private List<Letter> ListLetter = new List<Letter>() { };
-		private double sum = 0;
-		public ShannonAlgorithm(char[] userInput)
+		private Dictionary<char, string> LettersCoding = new Dictionary<char, string>();
+		private char[] letters;
+		private int[] lettersCount;
+		private bool flag = true;
+		
+		public ShannonAlgorithm(char[] letters, int[] lettersCount)
 		{
-			this.data = userInput;
-			Worker();
+			this.letters = letters;
+			this.lettersCount = lettersCount;
+            this.GetShannonCodeByLetters(' ', " ", 0, letters.Length - 1);
 		}
-		private void GetFullSum()
-        {
-            for (int i = 0; i < ListLetter.Count; i++)
+
+		private void GetShannonCodeByLetters(char branch, string full_branch, int startPos, int endPos)
+		{
+            double dS;
+            int m, i, S;
+            string c_branch;
+            if (flag)
             {
-				sum += ListLetter[i].count;
+                c_branch = "";
+                flag = false;
             }
-        }
-		public List<Letter> GetData(){
-
-			return ListLetter;
-        }
-
-		private void SortInterest()
-		{
-			bool flag = false;
-			for (int i = 0; i < ListLetter.Count; i++)
-			{
-				if (i+1 == ListLetter.Count)
-				{
-					if (flag) { i = 0; flag = false; } else { break; }
-				}
-				if (ListLetter[i].interest > ListLetter[i+1].interest)
-				{
-					Letter swap = ListLetter[i];
-					ListLetter[i] = ListLetter[i+1];
-					ListLetter[i+1] = swap;
-					flag = true;
-				}
-			}
-		}
-
-
-		private void CheckArray(char elem)
-		{
-
-			if (elem <= 42 && elem >= 32 || elem <= 64 && elem >= 58)
-				return;
-
-			for (int j = 0; j < ListLetter.Count; j++)
-			{
-				if (ListLetter[j].letter == elem)
-				{
-					ListLetter[j].count += 1;
-					return;
-				}
-			}
-			ListLetter.Add(new Letter(elem, 1));
-		}
-		public void Worker()
-        {
-			for (int i = 0; i < data.Length; i++)
-			{
-				CheckArray(data[i]);
-			}
-			GetFullSum();
-            for (int i = 0; i < ListLetter.Count; i++)
+            else
             {
-				ListLetter[i].SetInterest(sum);
+                c_branch = full_branch + branch;
             }
-			SortInterest();
+
+            if (startPos == endPos)
+            {
+                if (LettersCoding.ContainsKey(letters[startPos]))
+				{
+                    LettersCoding[letters[startPos]] = c_branch;
+                }
+				else
+				{
+                    LettersCoding.Add(letters[startPos], c_branch);
+                }
+                return;
+            }
+
+            dS = 0;
+            for (i = startPos; i < endPos; i++)
+            {
+                dS += lettersCount[i];
+            }
+
+            dS /= 2;
+
+
+            S = 0;
+            i = startPos;
+            m = i;
+
+            while (S + lettersCount[i] < dS && i < endPos)
+            {
+                S += lettersCount[i];
+                m++;
+                i++;
+            }
+            this.GetShannonCodeByLetters('0', c_branch, startPos, m);
+            this.GetShannonCodeByLetters('1', c_branch, m + 1, endPos);
+        }
+
+        public Dictionary<char, string> GetLettersCode()
+		{
+            return LettersCoding;
 		}
-	}
+    }
 }

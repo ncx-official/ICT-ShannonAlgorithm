@@ -11,6 +11,7 @@ namespace ShannonAlgorithmApp
         public char letter;
         public int count;
         public double interest;
+        public string letterCode = "";
 
         public Letter(char letter,int count)
         {
