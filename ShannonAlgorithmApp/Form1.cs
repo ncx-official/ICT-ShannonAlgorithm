@@ -23,6 +23,9 @@ namespace ShannonAlgorithmApp
 		{
 			ShannonAlgorithm userText_1 = new ShannonAlgorithm(richTextBox1.Text.ToCharArray());
 			data = userText_1.GetData();
+			ToFile toFile = new ToFile();
+			toFile.WriteToFile(data[0]);
+
 		}
 	}
 }
