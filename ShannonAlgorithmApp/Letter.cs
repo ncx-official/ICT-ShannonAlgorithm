@@ -18,7 +18,10 @@ namespace ShannonAlgorithmApp
             this.letter = letter;
             this.count = count;
         }
-
+        /// <summary>
+        /// Обраховує відсоток.
+        /// </summary>
+        /// <param name="all"></param>
         public void SetInterest(double all)
         {
             interest = (count/all)*100.0;

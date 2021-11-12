@@ -13,6 +13,9 @@ namespace ShannonAlgorithmApp
 	public partial class Form1 : Form
 	{
 		private List<Letter> data;
+		private char[] UserInput;
+		private string Write;
+		private Dictionary<char, string> letterCodeValues;
 
 		public Form1()
 		{
@@ -23,7 +26,8 @@ namespace ShannonAlgorithmApp
 		{
 			// Convert user input to list of letters and sort it
 			//-----------------------------------------------------------------
-			SortData userText_1 = new SortData(richTextBox1.Text.ToCharArray());  
+			UserInput = richTextBox1.Text.ToCharArray();
+			SortData userText_1 = new SortData(UserInput);  
 			data = userText_1.GetData();
 			//-----------------------------------------------------------------
 			
@@ -47,8 +51,45 @@ namespace ShannonAlgorithmApp
 			// Convert letters to Shannon code and save it like (letter --> code)
 			// ----------------------------------------------------------------
 			ShannonAlgorithm testData = new ShannonAlgorithm(AllLetters, AllCount);
-			Dictionary<char, string> letterCodeValues = testData.GetLettersCode();
+			letterCodeValues = testData.GetLettersCode();
 			// ----------------------------------------------------------------
+
+			//
+			// ----------------------------------------------------------------
+			for (int i = 0; i < data.Count; i++)
+			{
+				data[i].letterCode = letterCodeValues[data[i].letter];
+			}
+			// ----------------------------------------------------------------
+			
+			Write = richTextBox1.Text;
+			foreach (var item in letterCodeValues)
+			{
+				Write = Write.Replace($"{item.Key}", item.Value);
+
+			}
+			for (int i = 0; i < data.Count; i++)
+            {
+				richTextBox2.Text = richTextBox2.Text + Printer(data[i]);
+            }
+            
+			richTextBox2.Text = richTextBox2.Text + Write;
 		}
-	}
+		private string Printer(Letter let)
+        {
+			return $"{let.letter} {let.count} {let.interest} {let.letterCode}\n";
+
+		}
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+			ToFile toFile = new ToFile();
+			toFile.WriteToFile(richTextBox1.Text);
+			for (int j = 0; j < data.Count; j++)
+			{
+				toFile.WriteToFile(data[j]);
+			}
+			toFile.WriteToFile(Write);
+		}
+    }
 }

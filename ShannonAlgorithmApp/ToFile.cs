@@ -23,7 +23,7 @@ namespace ShannonAlgorithmApp
         {
             try
             {
-                File.AppendAllText(path, $"{let.letter} {let.count} {let.interest} \n");
+                File.AppendAllText(path, $"{let.letter} {let.count} {let.interest} {let.letterCode}\n");
             }
             catch
             {
@@ -31,5 +31,18 @@ namespace ShannonAlgorithmApp
                 return;
             }
         }
+        public void WriteToFile(string str)
+        {
+            try
+            {
+                File.AppendAllText(path, str+"\n");
+            }
+            catch
+            {
+                MessageBox.Show("Error in File");
+                return;
+            }
+        }
+
     }
 }
