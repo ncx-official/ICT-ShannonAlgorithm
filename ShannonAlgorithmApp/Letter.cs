@@ -24,7 +24,7 @@ namespace ShannonAlgorithmApp
         /// <param name="all"></param>
         public void SetInterest(double all)
         {
-            interest = (count/all)*100.0;
+            interest = Math.Round((count/all)*100.0, 3);
         }
     }
 }

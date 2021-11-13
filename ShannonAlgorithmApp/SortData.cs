@@ -51,9 +51,8 @@ namespace ShannonAlgorithmApp
 
 		private void CheckArray(char elem)
 		{
-
-			if (elem <= 42 && elem >= 32 || elem <= 64 && elem >= 58)
-				return;
+			//if (elem <= 42 && elem >= 32 || elem <= 64 && elem >= 58) // use only letters without spaces and other symbols
+				//return;
 
 			for (int j = 0; j < ListLetter.Count; j++)
 			{

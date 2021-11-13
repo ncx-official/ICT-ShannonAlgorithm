@@ -28,12 +28,6 @@ namespace ShannonAlgorithmApp
 
 			// Convert user input to list of letters and sort it
 			//-----------------------------------------------------------------
-			if (richTextBox1.Text.Trim() == "")
-			{
-				MessageBox.Show("User input is null, try to analyze another data.", "Error");
-				return;
-			}
-
 			UserInput = richTextBox1.Text.ToCharArray();
 			SortData userText_1 = new SortData(UserInput);  
 			data = userText_1.GetData();
@@ -81,11 +75,11 @@ namespace ShannonAlgorithmApp
 				richTextBox2.Text = richTextBox2.Text + Printer(data[i]);
             }
             
-			richTextBox2.Text = richTextBox2.Text + Write;
+			richTextBox2.Text = richTextBox2.Text + $"\nДвійковий код усього повідомлення:\n{Write}";
 		}
 		private string Printer(Letter let)
         {
-			return $"{let.letter} {let.count} {let.interest} {let.letterCode}\n";
+			return $"Letter: '{let.letter}', CountInText: {let.count}, Probability: {let.interest}%, Двійковий код: {let.letterCode}\n";
 
 		}
 
@@ -96,13 +90,18 @@ namespace ShannonAlgorithmApp
 
 		private void saveToolStripMenuItem_Click(object sender, EventArgs e)
 		{
-			ToFile toFile = new ToFile();
+			ToFile toFile = new ToFile("ResultData");
 			toFile.WriteToFile(richTextBox1.Text);
 			for (int j = 0; j < data.Count; j++)
 			{
 				toFile.WriteToFile(data[j]);
 			}
-			toFile.WriteToFile(Write);
+			toFile.WriteToFile($"\nДвійковий код усього повідомлення:\n{Write}");
+		}
+
+		private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			this.Close();
 		}
 	}
 }

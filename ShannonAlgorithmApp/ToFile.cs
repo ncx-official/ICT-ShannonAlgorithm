@@ -10,7 +10,7 @@ namespace ShannonAlgorithmApp
 {
     class ToFile
     {
-        private string path = @"C:\";
+        private string path = @"D:\";
         private string name;
 
         public ToFile(string name = "Test")
@@ -23,7 +23,7 @@ namespace ShannonAlgorithmApp
         {
             try
             {
-                File.AppendAllText(path, $"{let.letter} {let.count} {let.interest} {let.letterCode}\n");
+                File.AppendAllText(path, $"Letter: '{let.letter}', CountInText: {let.count}, Probability: {let.interest}%, Двійковий код: {let.letterCode}\n");
             }
             catch
             {
