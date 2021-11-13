@@ -24,8 +24,16 @@ namespace ShannonAlgorithmApp
 
 		private void button1_Click(object sender, EventArgs e)
 		{
+			richTextBox2.Clear();
+
 			// Convert user input to list of letters and sort it
 			//-----------------------------------------------------------------
+			if (richTextBox1.Text.Trim() == "")
+			{
+				MessageBox.Show("User input is null, try to analyze another data.", "Error");
+				return;
+			}
+
 			UserInput = richTextBox1.Text.ToCharArray();
 			SortData userText_1 = new SortData(UserInput);  
 			data = userText_1.GetData();
@@ -81,8 +89,13 @@ namespace ShannonAlgorithmApp
 
 		}
 
-        private void button2_Click(object sender, EventArgs e)
-        {
+		private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			MessageBox.Show("The program was created by:\n- Nasikovskyi Vitalii\n- Ovramets Illia\n- Nesterenko Vyacheslav\n- Kaplia Heorhii\n- Karavan Evhenii\n- Marchenko Nikolas", "About program");
+		}
+
+		private void saveToolStripMenuItem_Click(object sender, EventArgs e)
+		{
 			ToFile toFile = new ToFile();
 			toFile.WriteToFile(richTextBox1.Text);
 			for (int j = 0; j < data.Count; j++)
@@ -91,5 +104,5 @@ namespace ShannonAlgorithmApp
 			}
 			toFile.WriteToFile(Write);
 		}
-    }
+	}
 }
