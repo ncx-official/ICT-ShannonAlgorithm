@@ -16,6 +16,8 @@ namespace ShannonAlgorithmApp
 		private char[] UserInput;
 		private string Write;
 		private Dictionary<char, string> letterCodeValues;
+		private int LenghtCodeASCI;
+
 
 		public Form1()
 		{
@@ -25,6 +27,8 @@ namespace ShannonAlgorithmApp
 		private void button1_Click(object sender, EventArgs e)
 		{
 			richTextBox2.Clear();
+
+			LenghtCodeASCI = (richTextBox1.Text.Length * 8);
 
 			// Convert user input to list of letters and sort it
 			//-----------------------------------------------------------------
@@ -80,7 +84,8 @@ namespace ShannonAlgorithmApp
 				richTextBox2.Text = richTextBox2.Text + Printer(data[i]);
             }
             
-			richTextBox2.Text = richTextBox2.Text + $"\nДвійковий код усього повідомлення:\n{Write}";
+			richTextBox2.Text = richTextBox2.Text + $"\nДвійковий код усього повідомлення:\n{Write}\n Довжина в бітах кодованого повідомлення: {Write.Length} біт\n";
+			richTextBox2.Text = richTextBox2.Text + $"\nДовжина коду в ASCI {LenghtCodeASCI}";
 		}
 		private string Printer(Letter let)
         {
@@ -101,7 +106,8 @@ namespace ShannonAlgorithmApp
 			{
 				toFile.WriteToFile(data[j]);
 			}
-			toFile.WriteToFile($"\nДвійковий код усього повідомлення:\n{Write}");
+			toFile.WriteToFile($"\nДвійковий код усього повідомлення:\n{Write}\n Довжина в бітах кодованого повідомлення: {Write.Length} біт\n");
+			toFile.WriteToFile($"\nДовжина коду в ASCI: {LenghtCodeASCI}");
 		}
 
 		private void exitToolStripMenuItem_Click(object sender, EventArgs e)
