@@ -29,6 +29,11 @@ namespace ShannonAlgorithmApp
 			// Convert user input to list of letters and sort it
 			//-----------------------------------------------------------------
 			UserInput = richTextBox1.Text.ToCharArray();
+			if (richTextBox1.Text == "")
+			{
+				MessageBox.Show("Помилка зчитування даних, введено пусте значення.");
+				return;
+			}
 			SortData userText_1 = new SortData(UserInput);  
 			data = userText_1.GetData();
 			//-----------------------------------------------------------------
@@ -102,6 +107,11 @@ namespace ShannonAlgorithmApp
 		private void exitToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			this.Close();
+		}
+
+		private void button2_Click(object sender, EventArgs e)
+		{
+
 		}
 	}
 }
