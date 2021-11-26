@@ -117,6 +117,9 @@ namespace ShannonAlgorithmApp
 
 		private void button2_Click(object sender, EventArgs e)
 		{
+			Decoding decoding = new Decoding(letterCodeValues);
+
+		 	richTextBox4.Text = decoding.GetResult(richTextBox3.Text);
 
 		}
 	}

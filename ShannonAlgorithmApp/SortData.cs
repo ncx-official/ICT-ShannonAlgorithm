@@ -16,6 +16,7 @@ namespace ShannonAlgorithmApp
 			this.data = userInput;
 			Worker();
 		}
+
 		private void GetFullSum()
         {
             for (int i = 0; i < ListLetter.Count; i++)
