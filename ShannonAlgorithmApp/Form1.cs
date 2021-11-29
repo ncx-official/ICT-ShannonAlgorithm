@@ -129,8 +129,6 @@ namespace ShannonAlgorithmApp
 			{
 				MessageBox.Show("Введіть інше значення.");
 			}
-
-
 		}
 	}
 }

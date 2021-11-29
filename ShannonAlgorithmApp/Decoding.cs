@@ -30,19 +30,19 @@ namespace ShannonAlgorithmApp
             }
             return maxvalue;
         }
-        //can you can a can as a canner can can a can
+
         public string GetResult(string userInput)
         {
             int start = 0;
-            int caunt = GetMaxLenValue();
-            int end = caunt;
+            int cauntl = GetMaxLenValue();
+            int end = cauntl;
             string result = "";
             bool flag = false;
             string letter;
-            caunt = 0;
+            int caunt = 0;
             do
             {
-                if(start > end)
+                if (start > end)
                 {
                     break;
                 }
@@ -54,15 +54,15 @@ namespace ShannonAlgorithmApp
                         result += $"{item.Key}";
                         caunt += letter.Length;
                         start = end;
-                        end += caunt;
+                        end += cauntl;
                         flag = true;
                         break;
                     }
                 }
-                if (end >= userInput.Length - 1) { end = userInput.Length - 1;}
-                if (!flag) { end--;}
+                if (end >= userInput.Length - 1) { end = userInput.Length - 1; }
+                if (!flag) { end--; }
                 flag = false;
-                
+
             }
             while (end < userInput.Length);
 
@@ -77,7 +77,5 @@ namespace ShannonAlgorithmApp
             }
             return result;
         }
-
-
     }
 }
