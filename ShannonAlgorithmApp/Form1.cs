@@ -117,9 +117,19 @@ namespace ShannonAlgorithmApp
 
 		private void button2_Click(object sender, EventArgs e)
 		{
-			Decoding decoding = new Decoding(letterCodeValues);
+			if (richTextBox3.Text.Length < 1 || richTextBox2.Text.Length < 1)
+				return;
 
-		 	richTextBox4.Text = decoding.GetResult(richTextBox3.Text);
+			try
+			{
+				Decoding decoding = new Decoding(letterCodeValues);
+				richTextBox4.Text = decoding.GetResult(richTextBox3.Text);
+			}
+			catch
+			{
+				MessageBox.Show("Введіть інше значення.");
+			}
+
 
 		}
 	}
