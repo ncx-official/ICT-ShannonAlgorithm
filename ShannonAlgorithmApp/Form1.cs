@@ -21,6 +21,7 @@ namespace ShannonAlgorithmApp
 
 		public Form1()
 		{
+			this.StartPosition = FormStartPosition.CenterScreen;
 			InitializeComponent();
 		}
 
