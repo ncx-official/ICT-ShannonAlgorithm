@@ -75,11 +75,23 @@ namespace ShannonAlgorithmApp
 			// ----------------------------------------------------------------
 			
 			Write = richTextBox1.Text;
-			foreach (var item in letterCodeValues)
-			{
-				Write = Write.Replace($"{item.Key}", item.Value);
-
+			if (Write.Contains("0") || Write.Contains("1"))
+            {
+				string result = "";
+				foreach (var item in Write)
+				{
+					result += letterCodeValues[item];
+				}
+				Write = result;
 			}
+            else
+            {
+				foreach (var item in letterCodeValues)
+				{
+					Write = Write.Replace($"{item.Key}", item.Value);
+				}
+			}
+
 			for (int i = 0; i < data.Count; i++)
             {
 				richTextBox2.Text = richTextBox2.Text + Printer(data[i]);
